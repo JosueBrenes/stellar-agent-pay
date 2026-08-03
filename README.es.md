@@ -1,5 +1,12 @@
 # stellar-agent-pay
 
+[![npm test](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/test.yml/badge.svg)](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/test.yml)
+[![npm run build](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/build.yml/badge.svg)](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/build.yml)
+[![npm run lint](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/lint.yml/badge.svg)](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/lint.yml)
+[![npm run smoke](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/smoke.yml/badge.svg)](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/smoke.yml)
+[![CodeQL](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/codeql.yml/badge.svg)](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/codeql.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Plugin de CLI para Stellar que permite a un agente de IA desbloquear recursos HTTP de pago (x402) con USDC, bajo una política de gasto que vos controlás, y con una bitácora legible de cada intento.
 
 English version: [README.md](README.md).

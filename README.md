@@ -1,5 +1,12 @@
 # stellar-agent-pay
 
+[![npm test](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/test.yml/badge.svg)](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/test.yml)
+[![npm run build](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/build.yml/badge.svg)](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/build.yml)
+[![npm run lint](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/lint.yml/badge.svg)](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/lint.yml)
+[![npm run smoke](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/smoke.yml/badge.svg)](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/smoke.yml)
+[![CodeQL](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/codeql.yml/badge.svg)](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/codeql.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 A Stellar CLI plugin that lets an AI agent unlock x402 paid HTTP resources with USDC, under a spending policy you control, with a readable audit trail of every attempt.
 
 ```
