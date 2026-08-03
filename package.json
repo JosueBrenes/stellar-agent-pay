@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Stellar CLI plugin that lets AI agents unlock x402 paid HTTP resources with USDC under an auditable spending policy",
   "scripts": {
-    "test": "node --import tsx --test test/*.test.ts",
+    "test": "node scripts/test.mjs",
     "build": "tsc -p tsconfig.build.json",
     "dev": "tsx src/cli.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit",
