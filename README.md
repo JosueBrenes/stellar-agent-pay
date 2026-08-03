@@ -75,6 +75,21 @@ A settled payment involves three parties, and the agent is not the one covering 
 
 On Stellar the client signs only a contract authorization entry, not a full transaction. The facilitator assembles the transaction, pays the fee and submits it. So the agent's wallet needs USDC and **zero XLM**, and never deals with sequence numbers or fee bumps.
 
+## Documentation
+
+Full docs live in [`docs/`](docs/README.md).
+
+| Document                                       | Read it when                                                      |
+| ---------------------------------------------- | ----------------------------------------------------------------- |
+| [Getting started](docs/getting-started.md)     | You want it working on testnet, from nothing to a settled payment |
+| [CLI reference](docs/cli.md)                   | You need exact flags, exit codes and output shapes                |
+| [Spending policy](docs/policy.md)              | You are deciding what your agent may buy                          |
+| [Audit trail](docs/audit.md)                   | You need to know what was spent and why something was refused     |
+| [Driving it from an agent](docs/for-agents.md) | You are wiring this into an autonomous loop                       |
+| [Architecture](docs/architecture.md)           | You want to know how it works inside                              |
+| [Glossary](docs/glossary.md)                   | A term in the output is unfamiliar                                |
+| [Troubleshooting](docs/troubleshooting.md)     | Something failed and you want the cause                           |
+
 ## Install
 
 Published on npm as [`stellar-agent-pay`](https://www.npmjs.com/package/stellar-agent-pay).
