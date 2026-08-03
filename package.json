@@ -1,6 +1,6 @@
 {
   "name": "stellar-agent-pay",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Stellar CLI plugin that lets AI agents unlock x402 paid HTTP resources with USDC under an auditable spending policy",
   "scripts": {
     "test": "node scripts/test.mjs",
