@@ -1,0 +1,24 @@
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Local secrets and agent state. Never commit a Stellar secret key.
+.env
+.env.*
+!.env.example
+.stellar-agent-pay/
+*.log
+events.jsonl
+wallet.json
+
+# Editors and OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Tooling caches
+coverage/
+.npm/
+.cache/

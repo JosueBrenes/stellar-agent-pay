@@ -1,0 +1,66 @@
+name: Bug report
+description: Something in the CLI behaves differently than documented
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not paste a secret key, a wallet file, or anything from `~/.stellar-agent-pay/wallet.json`.
+        If the problem involves a payment, a redacted line from `audit.log` is usually enough.
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Output of `stellar-agent-pay --version`
+      placeholder: 0.1.0
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Node and OS
+      placeholder: node 22.11.0, Windows 11
+    validations:
+      required: true
+
+  - type: dropdown
+    id: network
+    attributes:
+      label: Network
+      options:
+        - stellar:testnet
+        - stellar:pubnet
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: The exact commands you ran
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected, and what happened instead
+    validations:
+      required: true
+
+  - type: textarea
+    id: output
+    attributes:
+      label: Output
+      description: Rerun with `STELLAR_AGENT_PAY_DEBUG=1` if there was an error. Redact addresses if you prefer.
+      render: shell
+
+  - type: textarea
+    id: policy
+    attributes:
+      label: Policy
+      description: Output of `stellar-agent-pay policy show --json`, if the issue involves a payment decision
+      render: json

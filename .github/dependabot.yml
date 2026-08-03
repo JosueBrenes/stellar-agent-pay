@@ -1,0 +1,25 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      x402:
+        patterns:
+          - '@x402/*'
+      dev-dependencies:
+        dependency-type: development
+    commit-message:
+      prefix: 'deps'
+      prefix-development: 'deps(dev)'
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: 'ci'

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/JosueBrenes/stellar-agent-pay/security/advisories/new
+    about: Report privately through a security advisory, never as a public issue.
+  - name: x402 on Stellar
+    url: https://developers.stellar.org
+    about: Protocol, SDK and facilitator questions that are not about this CLI.
