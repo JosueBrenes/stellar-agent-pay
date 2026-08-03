@@ -31,39 +31,49 @@ scripts/
 
 ## The payment path
 
+```mermaid
+flowchart TD
+    A["stellar-agent-pay unlock &lt;url&gt;"] --> B["load policy, wallet, 24 h spend"]
+    B --> C["GET &lt;url&gt;"]
+    C -->|request| SRV(["resource server"])
+    SRV -->|402 response| D["402 + PAYMENT-REQUIRED"]
+    D --> E["parse the quoted terms"]
+    E --> P{"POLICY ENGINE (engine.ts)<br/>8 checks, first fail wins"}
+
+    P -->|fail| R["refused"]
+    R --> R1["audit BLOCKED"]
+    R1 --> R2["exit 2"]
+    R2 --> R3["nothing signed"]
+
+    P -->|pass| G["allowed"]
+    G --> G1["sign auth entry"]
+    G1 --> G2["PAYMENT-SIGNATURE header"]
+    G2 --> G3["resource server"]
+    G3 --> G4["facilitator verify + settle"]
+    G4 --> G5["Stellar network"]
+    G5 --> G6["200 + resource"]
+    G6 --> G7["audit PAID with tx hash"]
+    G7 --> G8["resource to stdout, exit 0"]
+
+    classDef cli fill:#9ad0f5,stroke:#1f2937,color:#111
+    classDef http fill:#c4b5fd,stroke:#1f2937,color:#111
+    classDef ext fill:#fde68a,stroke:#1f2937,color:#111
+    classDef gate fill:#fca5a5,stroke:#1f2937,color:#111
+    classDef stop fill:#fee2e2,stroke:#1f2937,color:#111
+    classDef go fill:#bbf7d0,stroke:#1f2937,color:#111
+    classDef goOn fill:#dcfce7,stroke:#1f2937,color:#111
+
+    class A,B,E cli
+    class C,D http
+    class SRV ext
+    class P gate
+    class R gate
+    class R1,R2,R3 stop
+    class G go
+    class G1,G2,G3,G4,G5,G6,G7,G8 goOn
 ```
-                    stellar-agent-pay unlock <url>
-                                 |
-                      load policy, wallet, 24 h spend
-                                 |
-                          GET <url>  ----------------->  resource server
-                                 |
-                          402 + PAYMENT-REQUIRED  <-----
-                                 |
-                     parse the quoted terms
-                                 |
-                  +--------------+--------------+
-                  |   POLICY ENGINE (engine.ts) |
-                  |   8 checks, first fail wins |
-                  +--------------+--------------+
-                                 |
-                 refused <-------+-------> allowed
-                    |                          |
-            audit BLOCKED               sign auth entry
-            exit 2                             |
-            nothing signed              PAYMENT-SIGNATURE header
-                                               |
-                                        resource server
-                                               |
-                                     facilitator verify + settle
-                                               |
-                                        Stellar network
-                                               |
-                                        200 + resource
-                                               |
-                                    audit PAID with tx hash
-                                    resource to stdout, exit 0
-```
+
+The branch on the left is the whole point of the tool. It exits before `sign auth entry`, so a refused payment leaves no signature behind, not even an unsubmitted one.
 
 ## Where enforcement happens
 
