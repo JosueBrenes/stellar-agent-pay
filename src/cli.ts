@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { createRequire } from "node:module";
 import { Command } from "commander";
 import "dotenv/config";
 import { audit, type AuditOptions } from "./commands/audit.js";
@@ -20,7 +21,9 @@ import { CliError, EXIT } from "./core/errors.js";
 import { color, printErr } from "./core/output.js";
 import { SETTABLE_KEYS } from "./core/policy.js";
 
-const VERSION = "0.1.0";
+// Read from the manifest so `--version` can never drift from the published one.
+// npm always ships package.json, and it sits one level above both src/ and dist/.
+const VERSION = (createRequire(import.meta.url)("../package.json") as { version: string }).version;
 
 type UnlockCliOptions = {
   method: string;
