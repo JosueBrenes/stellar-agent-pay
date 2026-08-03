@@ -37,15 +37,43 @@ Spending policy
   audit: ~/.stellar-agent-pay/audit.log
 ```
 
-## Why
+## What problem this solves
 
-x402 turns HTTP 402 into a working payment handshake: the server answers `402 Payment Required` with machine readable terms, the client signs a payment, and the request is retried. On Stellar the client signs only contract authorization entries, and the OpenZeppelin Channels facilitator assembles, sponsors and submits the transaction, so an agent can pay with USDC and zero XLM.
+Plenty of useful APIs charge for access. Getting that access means signing up, generating a key and putting a credit card on file, which is fine for a person and impossible for an autonomous agent.
 
-That makes it trivial for an autonomous agent to spend money. `stellar-agent-pay` puts a policy between the 402 and the signature:
+x402 removes the signup. It puts HTTP 402, a status code that sat unused for decades, back to work:
+
+```
+agent   GET /report
+server  402 Payment Required, this costs 0.001 USDC, pay to G...
+agent   signs the payment
+agent   GET /report + proof of payment
+server  200 OK, here is the report
+```
+
+No account, no API key, no card. One machine buys from another, per request.
+
+Which creates the obvious problem: an agent holding a wallet can now spend money on its own. A prompt injection, a compromised tool, or a server that quotes 500 USDC for a weather lookup all end the same way, with the agent signing.
+
+**`stellar-agent-pay` is the thing that says no.** It sits between the 402 and the signature and checks the quoted payment against limits you set: a ceiling per request, a budget per domain per 24 h, a budget for the whole agent per 24 h, and an allowlist of domains that can be paid at all. Anything outside those limits is refused before a signature exists, and every attempt is written to an audit log, whether it paid or not.
+
+Think of it as a prepaid card for your agent, with a limit per purchase, a limit per merchant, a daily limit, and a receipt for every attempt including the declined ones.
 
 - The policy is evaluated at `onBeforePaymentCreation`, the last moment before any authorization entry is signed. A refused payment never produces a signature.
 - Every attempt, paid or refused, is appended to `~/.stellar-agent-pay/audit.log`.
 - Budgets are enforced from the local ledger of settled payments, per request, per domain per 24 h, and per agent per 24 h.
+
+### Who pays what
+
+A settled payment involves three parties, and the agent is not the one covering the network fee:
+
+| Party                                   | Puts in                            |
+| --------------------------------------- | ---------------------------------- |
+| Your agent's wallet                     | The price of the resource, in USDC |
+| The API seller                          | Nothing, it receives the USDC      |
+| The facilitator (OpenZeppelin Channels) | The Stellar network fee, in XLM    |
+
+On Stellar the client signs only a contract authorization entry, not a full transaction. The facilitator assembles the transaction, pays the fee and submits it. So the agent's wallet needs USDC and **zero XLM**, and never deals with sequence numbers or fee bumps.
 
 ## Install
 
