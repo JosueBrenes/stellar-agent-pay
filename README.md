@@ -1,8 +1,7 @@
 # stellar-agent-pay
 
-[![npm version](https://img.shields.io/npm/v/stellar-agent-pay.svg)](https://www.npmjs.com/package/stellar-agent-pay)
-[![npm downloads](https://img.shields.io/npm/dm/stellar-agent-pay.svg)](https://www.npmjs.com/package/stellar-agent-pay)
-[![node](https://img.shields.io/node/v/stellar-agent-pay.svg)](https://www.npmjs.com/package/stellar-agent-pay)
+[![npm](https://img.shields.io/npm/v/stellar-agent-pay?logo=npm&color=cb3837)](https://www.npmjs.com/package/stellar-agent-pay)
+[![node](https://img.shields.io/node/v/stellar-agent-pay?logo=node.js&color=5fa04e)](https://www.npmjs.com/package/stellar-agent-pay)
 [![npm test](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/test.yml/badge.svg)](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/test.yml)
 [![npm run build](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/build.yml/badge.svg)](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/build.yml)
 [![npm run lint](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/lint.yml/badge.svg)](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/lint.yml)
