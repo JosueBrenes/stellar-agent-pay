@@ -1,5 +1,8 @@
 # stellar-agent-pay
 
+[![npm version](https://img.shields.io/npm/v/stellar-agent-pay.svg)](https://www.npmjs.com/package/stellar-agent-pay)
+[![npm downloads](https://img.shields.io/npm/dm/stellar-agent-pay.svg)](https://www.npmjs.com/package/stellar-agent-pay)
+[![node](https://img.shields.io/node/v/stellar-agent-pay.svg)](https://www.npmjs.com/package/stellar-agent-pay)
 [![npm test](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/test.yml/badge.svg)](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/test.yml)
 [![npm run build](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/build.yml/badge.svg)](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/build.yml)
 [![npm run lint](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/lint.yml/badge.svg)](https://github.com/JosueBrenes/stellar-agent-pay/actions/workflows/lint.yml)
@@ -47,8 +50,22 @@ That makes it trivial for an autonomous agent to spend money. `stellar-agent-pay
 
 ## Install
 
+Published on npm as [`stellar-agent-pay`](https://www.npmjs.com/package/stellar-agent-pay).
+
 ```bash
 npm install -g stellar-agent-pay
+```
+
+Without installing anything:
+
+```bash
+npx stellar-agent-pay unlock https://api.example.com/weather
+```
+
+As a dependency of a project that drives the CLI from a script:
+
+```bash
+npm install stellar-agent-pay
 ```
 
 Or from source:
