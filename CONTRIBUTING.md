@@ -44,7 +44,7 @@ scripts/smoke.mjs      end to end run used by npm run smoke and CI
 2. Push a `Check` in `evaluate()` in `src/core/engine.ts`. Give it a stable `rule` id, since that id ends up in the audit log and in `--json` output.
 3. Add a remediation hint in `remediation()` in `src/commands/unlock.ts`.
 4. Cover it in `test/engine.test.ts`, both the pass and the refusal.
-5. Document it in the rules table in `README.md` and `README.es.md`.
+5. Document it in the rules table in `README.md`.
 
 Rules must be evaluated before any signing happens. The policy hook is attached at `onBeforePaymentCreation`, which is the last point where a payment can still be refused without producing a signature. Do not move enforcement later than that.
 

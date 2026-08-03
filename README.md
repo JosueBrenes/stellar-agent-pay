@@ -35,8 +35,6 @@ Spending policy
   audit: ~/.stellar-agent-pay/audit.log
 ```
 
-Spanish version of this document: [README.es.md](README.es.md).
-
 ## Why
 
 x402 turns HTTP 402 into a working payment handshake: the server answers `402 Payment Required` with machine readable terms, the client signs a payment, and the request is retried. On Stellar the client signs only contract authorization entries, and the OpenZeppelin Channels facilitator assembles, sponsors and submits the transaction, so an agent can pay with USDC and zero XLM.

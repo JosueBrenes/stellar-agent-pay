@@ -13,7 +13,7 @@
 - [ ] `npm test` passes
 - [ ] `npm run build` passes
 - [ ] `npm run smoke` passes
-- [ ] Docs updated if behaviour changed (`README.md` and `README.es.md`)
+- [ ] Docs updated if behaviour changed (`README.md`)
 
 ## If this touches the payment path
 
